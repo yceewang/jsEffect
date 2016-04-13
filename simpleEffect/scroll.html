@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>滚动轮播</title>
+<link href="css/public.css"  rel="stylesheet" type="text/css">
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<!-- 内容部分 s -->
+<div class="content indexWrapper">
+	<!-- 城市俱乐部 s -->
+	<div class="clubs">
+		<div class="clubItemWrapper">
+			<ul class="clubItems cf" id="club_lunbo">
+				<li class="clubItem">
+    				<div class="face front">
+    					<img src="images/club.png">
+    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+  					</div>
+   				</li>
+				<li class="clubItem">
+    				<div class="face front">
+    					<img src="images/club.png">
+    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+  					</div>
+   				</li>
+                <li class="clubItem">
+    				<div class="face front">
+    					<img src="images/club.png">
+    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+  					</div>
+   				</li>
+                <li class="clubItem">
+    				<div class="face front">
+    					<img src="images/club.png">
+    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+  					</div>
+   				</li>
+                <li class="clubItem">
+    				<div class="face front">
+    					<img src="images/club.png">
+    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+  					</div>
+   				</li>
+                <li class="clubItem">
+    				<div class="face front">
+    					<img src="images/club.png">
+    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+  					</div>
+   				</li>
+                <li class="clubItem">
+    				<div class="face front">
+    					<img src="images/club.png">
+    					<div class="caption"><h3>不是大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+  					</div>
+   				</li>
+   			</ul>
+   		</div>
+    </div>
+	<!-- 城市俱乐部 e -->
+<script type="text/javascript">
+var clubInterval = 0;
+$(function(){
+
+	if($("#club_lunbo").children().length > 6){
+    	clubInterval = setInterval(clubLunBo,5000);
+    	$(".clubItem").hover(function(){
+    		clearInterval(clubInterval);
+    	},function(){
+    		clubInterval = setInterval(clubLunBo,5000);
+    	});
+	}
+});
+function clubLunBo(){
+	var obj = $("#club_lunbo");
+	obj.animate({left: -202}, 1000, function(){
+        //把第一个li丢最后面去
+		obj.children().eq(0).appendTo(obj);
+		obj.css({left: 0});
+    });
+}
+</script>
+</div>
+
+
+</body>
+</html>
