@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>toggle</title>
+<link href="css/public.css"  rel="stylesheet" type="text/css">
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<a href="" id="toggleButton">toggleButton</a>
+<br>
+<p id="disclaimer">Message here</p>
+<a href="" id="hideButton">click here, message below hide and this button hide</a>
+<br>
+<p id="hideMessage">This message is for hideButton</p>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#toggleButton').click(function(){
+            event.preventDefault();
+            //$('#disclaimer').toggle();
+            //toggle fade
+            //$('#disclaimer').toggle(slow);
+            if($('#disclaimer').is(':visible')) {
+                $('#disclaimer').hide();
+                //$('#disclaimer').fadeOut();
+                $(this).text('Hide');
+            } else {
+                $('#disclaimer').show();
+                $(this).text('Show');
+            }
+        });
+
+        //callback function
+        $('#hideButton').click(function(){
+            event.preventDefault();
+            $('#hideMessage').slideUp('slow',function(){
+                $('#hideButton').fadeOut();
+            });
+        })
+    });
+
+</script>
+</body>
+</html>

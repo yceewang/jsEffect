@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>hover</title>
+<link href="css/public.css"  rel="stylesheet" type="text/css">
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+    <style>
+        .hoverClass{background:#fafafa;}
+    </style>
+</head>
+<body>
+<p id="mouseover">This message is for mouseover</p>
+<p id="hovermessage">This message is for hover</p>
+<p id="togglemessage">This message is for toggle</p>
+<script type="text/javascript">
+    $(document).ready(function(){
+        //mouseover&mouseout
+        $('#mouseover').mouseover(function(){
+            $(this).addClass('hoverClass');
+        });
+        $('#mouseover').mouseout(function(){
+            $(this).removeClass('hoverClass');
+        });
+
+
+        //hover
+         $('#hovermessage').hover(function(){
+         $(this).addClass('hoverClass');
+         }, function(){
+         $(this).removeClass('hoverClass');
+         });
+
+
+        //点击toggleClass
+         $('#togglemessage').click(function(){
+         $(this).toggleClass('hoverClass');
+         });
+
+    });
+
+</script>
+</body>
+</html>
