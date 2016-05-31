@@ -42,26 +42,28 @@
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
+.distance{height:200px;}
 .content
 {
-height:2000px;
+height:1000px;
  /*just to get the page to scroll*/
 }
 	</style>  
   </head>
 
   <body>
-  <div class="content">
+  <div class="distance">
 </div>
 
     <div class="header">
   <h1>Animated Fixed Header (Scroll Down)</h1>
 </div>
+  <p>another header here</p>
 <div class="content">
 </div>
 <script type="text/javascript">
      $(function(){
- var shrinkHeader = 2000;
+ var shrinkHeader = 200;
   $(window).scroll(function() {
     var scroll = getCurrentScroll();
       if ( scroll >= shrinkHeader ) {
