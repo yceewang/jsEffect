@@ -17,7 +17,7 @@
     transition: height 0.3s;
     text-align:center;
     line-height:160px;
-
+position:relative;
 }
 .header.shrink {
 	position: fixed;
@@ -62,21 +62,19 @@ height:1000px;
 <div class="content">
 </div>
 <script type="text/javascript">
-     $(function(){
- var shrinkHeader = 200;
-  $(window).scroll(function() {
-    var scroll = getCurrentScroll();
-      if ( scroll >= shrinkHeader ) {
-           $('.header').addClass('shrink');
-        }
-        else {
-            $('.header').removeClass('shrink');
-        }
-  });
-function getCurrentScroll() {
-    return window.pageYOffset || document.documentElement.scrollTop;
-    }
-});   
+    $(document).ready(function() {
+        var $window = $(window),
+                $navigation = $(".header");
+
+        $window.scroll(function() {
+            if (!$navigation.hasClass("shrink") && ($window.scrollTop() > $navigation.offset().top)) {
+                $navigation.addClass("shrink").data("top", $navigation.offset().top);
+            }
+            else if ($navigation.hasClass("shrink") && ($window.scrollTop() < $navigation.data("top"))) {
+                $navigation.removeClass("shrink");
+            }
+        });
+    });
 </script>
 </body>
 </html>

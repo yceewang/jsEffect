@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>accordion</title>
+<link href="css/public.css"  rel="stylesheet" type="text/css">
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+ <div id="celebs">
+  			<h2 class="heading">Our Celebrities</h2>
+  			<p class="info">
+  				We have an ever changing roster of newly chipped celebrities. But it can take as little as a week for the little critters to realise they've been tagged - so you have to be fast! 
+  			</p>
+        <ul id="accordion">
+        	<li class="active">
+        		A-List Celebrities
+        		<ul>
+              <li><a href="#">Computadors</a> &nbsp;New!</li>
+              <li><a href="#">Johny Stardust</a></li>
+              <li><a href="#">Beau Dandy</a></li>
+						</ul>
+        	</li>
+        	<li>
+        		B-List Celebrities
+        		<ul>
+        			<li><a href="#">Sinusoidal Tendancies</a></li>
+        			<li><a href="#">Steve Extreme</a></li>
+        		</ul>
+        	</li>
+        	<li>
+        		Has Beens
+        		<ul>
+        			<li>Duran Duran Duran</li>
+        			<li>Mike's Mechanic</li>
+        		</ul>
+        	</li>
+        	<li>
+        		Barely Famous Celebrities
+        		<ul>
+        			<li>Lardy Dah</li>
+        			<li>Rove Live</li>
+        		</ul>
+        	</li>
+        </ul> 
+      </div>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#celebs ul > li ul')
+    .click(function(event){
+      event.stopPropagation();
+    })
+    .filter(':not(:first)')
+    .hide();
+    
+  $('#celebs ul > li').click(function(){
+    var selfClick = $(this).find('ul:first').is(':visible');
+    if(!selfClick) {
+      $(this)
+        .parent()
+        .find('> li ul:visible')
+        .slideToggle();
+    }
+    
+    $(this)
+      .find('ul:first')
+      .stop(true, true)
+      .slideToggle();
+  });
+});
+
+</script>
+</body>
+</html>

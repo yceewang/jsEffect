@@ -111,8 +111,7 @@
 <!-- 内容部分 e -->
 <script type="text/javascript">
 $(function(){
-$('.tabs-stage div').hide();
-$('.tabs-stage div:first').show();
+$('.tabs-stage div:not(:first)').hide();
 $('.news_r_title a:first').addClass('active');
 
 $('.news_r_title a').on('mouseover', function(event){

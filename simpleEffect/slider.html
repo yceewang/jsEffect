@@ -29,7 +29,7 @@ $(document).ready(function(){
 	$(".slider").find('a:eq(0)').css('z-index', 23);
     var $con = $('.banner'), $box = $con.find('.slider'), $btns = $con.find('.sliderNumber'), i = -1, autoChange = function () {
         i++;
-        if (i === 4) { i = -1; }
+        if (i === $('.slider li').length) { i = -1; }
         $btns.find('a:eq(' + i + ')').addClass('active').siblings().removeClass('active');
         var curr = $box.find('a:eq(' + i + ')'), prev = curr.parent().siblings().find('a');
         prev.css('z-index', 22).fadeOut(1000);
@@ -46,7 +46,7 @@ $(document).ready(function(){
         autoChange();
 		return false;
     });
-	
+
 });
 </script>
 </body>

@@ -1,5 +1,4 @@
 @charset "utf-8";
-@charset "utf-8";
 /*banner*/
 .banner{width:100%;height:420px;background:url(../images/loading.gif) center center no-repeat #e8f2f6;border-top:1px solid #fff;}
 .slider{width:100%;height:420px;position:relative;z-index:0;*z-index:-1;}
@@ -184,7 +183,7 @@ a.cd-popup-trigger {
   position: relative;
   width: 90%;
   max-width: 400px;
-  margin: 4em auto;
+  margin: 0 auto;
   background: #FFF;
   border-radius: .25em .25em .4em .4em;
   text-align: center;
@@ -312,4 +311,78 @@ a.cd-popup-trigger {
           animation-duration: 1s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
+}
+
+/*下拉菜单*/
+#container {
+  position: relative;
+}
+
+#menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#menu, #menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#menu li {
+  float: left;
+  background: #FFF;
+}
+
+#menu a {
+  display: block;
+  padding: 5px;
+  width: 130px;
+}
+
+#menu li ul {
+  position: absolute;
+  left: -999em;
+  width: 140px;
+}
+
+#menu li:hover ul, #menu li ul:hover {
+  left:auto;
+}
+
+/*accordion*/
+#accordion {
+	width:200px;
+}
+#accordion li{
+	cursor: pointer;
+	background:#fff;
+	font-weight:bold;
+	color:#015287;
+	border:1px solid #b2b2b2;
+	margin-bottom:2px;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	padding: 4px 8px;
+}
+
+#accordion li.active{
+	color:#D15600
+}
+#accordion li ul{
+	padding:0;
+	margin:10px 0 0 0;
+}
+
+#accordion li.active li{
+	text-indent:0;
+}
+#accordion li li{
+	font-weight: normal;
+	background:none;
+	border:0;
 }
