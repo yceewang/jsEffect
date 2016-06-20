@@ -13,73 +13,110 @@
 	<!-- 城市俱乐部 s -->
 	<div class="clubs">
 		<div class="clubItemWrapper">
+        <a href="#" class="prev">prev</a>
 			<ul class="clubItems cf" id="club_lunbo">
 				<li class="clubItem">
     				<div class="face front">
     					<img src="images/club.png">
-    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+    					<div class="caption"><h3>1大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
   					</div>
    				</li>
 				<li class="clubItem">
     				<div class="face front">
     					<img src="images/club.png">
-    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+    					<div class="caption"><h3>2大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
   					</div>
    				</li>
                 <li class="clubItem">
     				<div class="face front">
     					<img src="images/club.png">
-    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+    					<div class="caption"><h3>3大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
   					</div>
    				</li>
                 <li class="clubItem">
     				<div class="face front">
     					<img src="images/club.png">
-    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+    					<div class="caption"><h3>4大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
   					</div>
    				</li>
                 <li class="clubItem">
     				<div class="face front">
     					<img src="images/club.png">
-    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+    					<div class="caption"><h3>5大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
   					</div>
    				</li>
                 <li class="clubItem">
     				<div class="face front">
     					<img src="images/club.png">
-    					<div class="caption"><h3>大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+    					<div class="caption"><h3>6大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
   					</div>
    				</li>
-                <li class="clubItem">
-    				<div class="face front">
-    					<img src="images/club.png">
-    					<div class="caption"><h3>不是大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
-  					</div>
-   				</li>
+				<li class="clubItem">
+					<div class="face front">
+						<img src="images/club.png">
+						<div class="caption"><h3>7大连俱乐部大连俱乐部大连俱乐部大连俱乐部</h3><p>电话：15134235432</p></div>
+					</div>
+				</li>
+
    			</ul>
+            <a href="#" class="next">next</a>
    		</div>
     </div>
 	<!-- 城市俱乐部 e -->
 <script type="text/javascript">
 var clubInterval = 0;
-$(function(){
 
+$(function(){
 	if($("#club_lunbo").children().length > 6){
-    	clubInterval = setInterval(clubLunBo,5000);
+		clubInterval = setInterval(clubLunBo,5000);
     	$(".clubItem").hover(function(){
-    		clearInterval(clubInterval);
+			clearInterval(clubInterval);
     	},function(){
     		clubInterval = setInterval(clubLunBo,5000);
     	});
+		$(".prev").click(function(){
+			event.preventDefault();
+			clearInterval(clubInterval);
+			if(!$("#club_lunbo").is(":animated")){
+				prev();
+			}
+			clubInterval = setInterval(clubLunBo,5000);
+		});
+		$(".next").click(function(){
+			event.preventDefault();
+			clearInterval(clubInterval);
+			if(!$("#club_lunbo").is(":animated")){
+				next();
+			}
+			clubInterval = setInterval(clubLunBo,5000);
+		});
+
 	}
 });
 function clubLunBo(){
 	var obj = $("#club_lunbo");
-	obj.animate({left: -202}, 1000, function(){
-        //把第一个li丢最后面去
+	obj.animate({left: -202}, 1000,function(){
 		obj.children().eq(0).appendTo(obj);
-		obj.css({left: 0});
-    });
+		obj.css({left:0});
+	});
+}
+function prev(){
+	var prev = $("#club_lunbo");
+	var last = $(".clubItem:last-child").clone();
+	last.prependTo($("#club_lunbo"));
+	prev.css({left:-202});
+	prev.animate({left:0},1000,function(){
+		$(".clubItem:last-child").remove();
+	});
+}
+function next(){
+	var next = $("#club_lunbo");
+	var first = $(".clubItem:first-child").clone();
+	first.appendTo($("#club_lunbo"));
+	next.animate({left:-202},1000,function(){
+		$(".clubItem:first-child").remove();
+		next.css({left:0});
+	});
 }
 </script>
 </div>

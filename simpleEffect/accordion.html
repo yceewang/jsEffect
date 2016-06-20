@@ -15,7 +15,7 @@
   			</p>
         <ul id="accordion">
         	<li class="active">
-        		A-List Celebrities
+        		<p class="header">A-List Celebrities</p>
         		<ul>
               <li><a href="#">Computadors</a> &nbsp;New!</li>
               <li><a href="#">Johny Stardust</a></li>
@@ -23,21 +23,21 @@
 						</ul>
         	</li>
         	<li>
-        		B-List Celebrities
+				<p class="header">B-List Celebrities</p>
         		<ul>
         			<li><a href="#">Sinusoidal Tendancies</a></li>
         			<li><a href="#">Steve Extreme</a></li>
         		</ul>
         	</li>
         	<li>
-        		Has Beens
+				<p class="header">Has Beens</p>
         		<ul>
         			<li>Duran Duran Duran</li>
         			<li>Mike's Mechanic</li>
         		</ul>
         	</li>
         	<li>
-        		Barely Famous Celebrities
+				<p class="header">Barely Famous Celebrities</p>
         		<ul>
         			<li>Lardy Dah</li>
         			<li>Rove Live</li>
@@ -47,27 +47,13 @@
       </div>
 <script type="text/javascript">
 $(document).ready(function(){
-  $('#celebs ul > li ul')
-    .click(function(event){
-      event.stopPropagation();
-    })
-    .filter(':not(:first)')
-    .hide();
-    
-  $('#celebs ul > li').click(function(){
-    var selfClick = $(this).find('ul:first').is(':visible');
-    if(!selfClick) {
-      $(this)
-        .parent()
-        .find('> li ul:visible')
-        .slideToggle();
-    }
-    
-    $(this)
-      .find('ul:first')
-      .stop(true, true)
-      .slideToggle();
-  });
+	$("#accordion > li ul:not(:first)").hide();
+	$(".header").click(function(){
+		$(this).parent().siblings().removeClass("active").find("ul:visible").slideUp("slow");
+		$(this).parent().addClass("active").find("ul").slideToggle();
+	});
+
+
 });
 
 </script>

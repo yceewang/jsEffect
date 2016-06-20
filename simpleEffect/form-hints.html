@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Comment with character counter</title>
+    <script src="js/jquery-1.8.3.min.js"></script>   
+    <style>
+        .inactive {
+            color: #666666;
+        }
+
+        form {
+            margin-right: 40px;
+        }
+
+        form div {
+            margin: 0 0 10px 160px;
+        }
+
+        form div label {
+            width: 140px;
+            float: left;
+            text-align: right;
+            margin: 5px 20px 0 -160px;
+        }
+​</style>
+</head>
+
+<body>
+<form action="">
+    <div>
+        <input name="name" id="name" value="Name" class="clear" type="text"/>
+    </div>
+    <div>
+        <input name="email" id="email" value="E-mail Address" class="clear" type="text"/>
+    </div>
+    <div>
+        <input name="website" id="website" value="Web Site URL" class="clear" type="text"/>
+    </div>
+    <div>
+        <label for="comment-text">Comment:</label>
+        <textarea rows="10" cols="50" name="comment-text" id="comment-text"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+<script>
+    $(document).ready(function() {
+        $('input.clear').each(function() {
+            $(this)
+                    .data('default', $(this).val())
+                    .addClass('inactive')
+                    .focus(function() {
+                        $(this).removeClass('inactive');
+                        if($(this).val() === $(this).data('default') || $(this).val() === '') {
+                            $(this).val('');
+                        }
+                    })
+                    .blur(function() {
+                        if($(this).val() === '') {
+                            $(this).addClass('inactive').val($(this).data('default'));
+                        }
+                    });
+        });
+    });
+</script>
+    
+  </body>
+</html>

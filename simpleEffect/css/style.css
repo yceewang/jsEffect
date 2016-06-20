@@ -386,3 +386,71 @@ a.cd-popup-trigger {
 	background:none;
 	border:0;
 }
+/*simple tooltips*/
+.tooltip {
+  display: none;
+  position: absolute;
+  border: 1px solid #333;
+  background-color: #ffed8a;
+  padding: 2px 6px;
+}
+
+/*Advanced tooltips*/
+span.dialog {
+  background: rgba(255,255,255,0.9);
+  font: 15px/2 normal Helvetica,Arial,Verdana,sans-serif;
+  height: 60px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: left;
+  white-space: nowrap;
+  width: 220px;
+  z-index: 100;
+}
+
+span.dialog:before{
+  content:"";
+  display:block;
+  width:0;
+  height:0;
+  border: 10px solid transparent;
+  border-bottom: 10px rgba(255,255,255,0.9) solid;
+  position:absolute;
+  top:-20px;
+  left:20px;
+}
+
+span.dialog span {
+  display: inline-block;
+  padding: 15px 0 0 12px;
+}
+
+span.dialog.left:before {
+    left:180px;
+}
+
+span.dialog.left span {
+  padding: 15px 0 0 17px;
+}
+
+span.dialog.above:before {
+    top:60px;
+    border-bottom: 10px transparent solid;
+    border-top: 10px rgba(255,255,255,0.9) solid;
+}
+
+span.dialog.above span {
+  padding: 13px 0 0 12px;
+}
+
+span.dialog.above.left:before {
+    top:60px;
+    left:180px;
+    border-bottom: 10px transparent solid;
+    border-top: 10px rgba(255,255,255,0.9) solid;
+}
+
+span.dialog.above.left span {
+  padding: 13px 0 0 17px;
+}

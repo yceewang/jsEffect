@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Comment with character counter</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <style>
+        .over-inline {
+            background-color: #FFFACD;
+        }
+
+        .active-inline {
+            background-color: inherit;
+        }
+
+        .active-inline textarea {
+            height: 10em;
+            width: 100%;
+        }
+        ​</style>
+</head>
+
+<body>
+　　<table>
+    　　　　<thead>
+　　　　　　<tr>
+    　　　　　　　　<th width="400">品名</th>
+    　　　　　　　　<th width="200">件数</th>
+    　　　　　　</tr>
+　　　　</thead>
+    　　　　<tbody>
+　　　　　　<tr height="50">
+    　　　　　　　　<td>iPhone6s</td>
+    　　　　　　　　<td class="edit">2</td>
+    　　　　　　</tr>
+　　　　　　<tr height="50">
+    　　　　　　　　<td>小米5</td>
+    　　　　　　　　<td class="edit">5</td>
+    　　　　　　</tr>
+　　　　</tbody>
+    　　　　<tfoot>
+　　　　　　<tr>
+    　　　　　　　　<td colspan="2" class="text-right">
+    　　　　　　　　　　<button type="button" class="btn" onclick="change(this)">修改</button>
+    　　　　　　　　</td>
+    　　　　　　</tr>
+　　　　</tfoot>
+    　　</table>
+<script type="text/javascript">
+    function change(obj){
+        var xg=$(obj).html();
+        if(xg=='修改'){
+            $('.edit').each(function(){
+                var old=$(this).html();
+                $(this).html("<input type='text' name='editname' class='text' value="+old+" >");
+            })
+            $(obj).html('保存');
+        }else if(xg=='保存'){
+            $('input[name=editname]').each(function(){
+                var old=$(this).html();
+                var newfont=$(this).parent('td').parent('tr').children().find('input').val();
+                $(this).parent('td').html(newfont);
+            })
+            $(obj).html('修改');
+        }
+    }
+
+    </body>
+    </html>

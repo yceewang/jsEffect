@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>simple tooltips</title>
+<link href="css/public.css"  rel="stylesheet" type="text/css">
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<table>
+<tbody>
+<tr>
+    <td>203A</td>
+    <td>Johny Stardust (<a href="../../images/johnny_400.jpg" class="lightbox">pic</a>)</td>
+    <td>Front-man</td>
+    <td><a href="#" class="location" title="Check out all the Celebs in LA this week!">Los Angeles</a></td>
+    <td>$39.95</td>
+</tr>
+<tr>
+    <td>141B</td>
+    <td>Beau Dandy (<a href="../../images/beau_400.jpg" class="lightbox">pic</a>)</td>
+    <td>Singer</td>
+    <td><a href="#" class="location" title="Check out all the Celebs in New York this week!">New York</a></td>
+    <td>$39.95</td>
+</tr>
+<tr>
+    <td>2031</td>
+    <td>Mo' Fat (<a href="img.jpg">pic</a>)</td>
+    <td>Producer</td>
+    <td><a href="#" class="location" title="Check out all the Celebs in New York this week!">New York</a></td>
+    <td>$19.95</td>
+</tr>
+<tr>
+    <td>007F</td>
+    <td>Kellie Kelly (<a href="../../images/kellie_400.jpg" class="lightbox">pic</a>)</td>
+    <td>Singer</td>
+    <td><a href="#" class="location" title="Check out all the Celebs in Omaha this week!">Omaha</a></td>
+    <td>$11.95</td>
+</tr>
+</tbody>
+</table>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.location').hover(function(event){
+            // Hover over code
+            var titleText = $(this).attr('title');
+            $(this)
+                    .data('tipText', titleText)
+                    .removeAttr('title');
+
+            $('<p class="tooltip"></p>')
+                    .text(titleText)
+                    .appendTo('body')
+                    .css('top', (event.pageY - 10) + 'px')
+                    .css('left', (event.pageX + 20) + 'px')
+                    .fadeIn('slow');
+        }, function() {
+            // Hover out code
+            $(this).attr('title', $(this).data('tipText'));
+            $('.tooltip').remove();
+        }).mousemove(function(event){
+            // Mouse move code
+            $('.tooltip')
+                    .css('top', (event.pageY - 10) + 'px')
+                    .css('left', (event.pageX + 20) + 'px');
+        });
+    });
+</script>
+</body>
+</html>

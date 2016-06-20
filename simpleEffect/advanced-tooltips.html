@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>Advanced tooltips</title>
+<link href="css/public.css"  rel="stylesheet" type="text/css">
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<p style="margin-bottom:10px;">
+    Welcome to <strong class="dialogWrapper">StarTrackr!<span class='dialog'><span><a href='#'>Legal Disclaimer</a></span></span></strong> the planet's premier celebrity tracking and monitoring service. Need to know where in the world the best bands, musicians or producers are within 2.2 square meters? You've come to the right place. We have a very special special on B-grade celebs this week dafasd, <strong>StarTrackr!<span class='dialog'><span><a href='#'>Legal Disclaimer</a></span></span></strong>so hurry in!
+</p>
+<div style="height:900px"></div>
+<p>
+    Welcome to <strong>StarTrackr!<span class='dialog'><span><a href='#'>Legal Disclaimer</a></span></span></strong> the planet's premier celebrity tracking and monitoring service. Need to know where in the world the best bands, musicians or producers are within 2.2 square meters? You've come to the right place. We have a very special special on B-grade celebs this week dafasd, <strong>StarTrackr!<span class='dialog'><span><a href='#'>Legal Disclaimer</a></span></span></strong>so hurry in!
+</p>
+<script type="text/javascript">
+    var DIALOG = {
+        current: null,
+        delay: 600,
+        timer: null,
+        setDialogs: function () {
+            var screenWidth = $(window).width(),
+                    screenBottom = $(window).scrollTop() + $(window).height();
+
+            $('.dialog').parent().hover(function(){
+                // store the dialog being hovered
+                DIALOG.current = $(this);
+                DIALOG.timer = setTimeout(function(){
+                    // find the dialog,
+                    DIALOG.current.find(".dialog").fadeIn('fast');
+                }, DIALOG.delay);
+            }, function(){
+                // on mouseout, clear timer and hide dialog
+                clearTimeout(DIALOG.timer);
+                $(this).find(".dialog").fadeOut('slow');
+            }).attr("title", ""); // clear the title to stop browser tooltips
+
+
+            $('.dialog').hover(function(){
+                $(this).stop().show();
+            },function(){
+                $(this).hide();
+            });
+
+            $(".dialog").each(function() { // grab the containing element
+                var container = $(this).parent(),
+                        top = container.height()+10, // default placement
+                        totalHeight = top + $(this).outerHeight(),
+                        width = $(this).outerWidth(),
+                        offset = container.offset(),
+                        left = 0;
+
+                // give it relative position if required
+                if (container.css('position') != 'absolute' && container.css('position') != 'fixed') {
+                    container.css({position: 'relative'});
+                }
+
+                // re-position if it's off the right of the screen
+                if (offset.left + width > screenWidth) {
+                    left = 0 - width + 80;
+                    $(this).addClass('left');
+                }
+                else {
+                    $(this).removeClass('left');
+                }
+
+                // re-position if it's off the bottom of the screen
+                if (offset.top + totalHeight > screenBottom) {
+                    top = 0 - $(this).outerHeight()-10;
+                    $(this).addClass('above');
+                }
+                else {
+                    $(this).removeClass('above');
+                }
+
+                // finally set the css properties to position onscreen
+                $(this).css({
+                    "top": top,
+                    "left": left
+                });
+            });
+        }
+    }
+
+    $(document).ready(function() {
+        DIALOG.setDialogs();
+    });
+
+    $(window).resize(function(){
+        DIALOG.setDialogs();
+    });
+
+</script>
+</body>
+</html>
