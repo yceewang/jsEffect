@@ -32,38 +32,36 @@
 　　　　　　<tr height="50">
     　　　　　　　　<td>iPhone6s</td>
     　　　　　　　　<td class="edit">2</td>
+    <td><button type="button" class="btn">修改</button></td>
     　　　　　　</tr>
 　　　　　　<tr height="50">
     　　　　　　　　<td>小米5</td>
     　　　　　　　　<td class="edit">5</td>
+                  <td><button type="button" class="btn">修改</button></td>
     　　　　　　</tr>
 　　　　</tbody>
-    　　　　<tfoot>
-　　　　　　<tr>
-    　　　　　　　　<td colspan="2" class="text-right">
-    　　　　　　　　　　<button type="button" class="btn" onclick="change(this)">修改</button>
-    　　　　　　　　</td>
-    　　　　　　</tr>
-　　　　</tfoot>
     　　</table>
 <script type="text/javascript">
+    $(document).ready(function() {
+        $(".btn").click(function(){
+            change(this);
+        });
+    });
     function change(obj){
-        var xg=$(obj).html();
-        if(xg=='修改'){
-            $('.edit').each(function(){
-                var old=$(this).html();
-                $(this).html("<input type='text' name='editname' class='text' value="+old+" >");
-            })
+        var status=$(obj).html();
+        var edit = $(obj).parent().parent().find(".edit");
+        if(status==='修改'){
+           var old=edit.html();
+           edit.html("<input type='text' value="+old+" >");
             $(obj).html('保存');
-        }else if(xg=='保存'){
-            $('input[name=editname]').each(function(){
-                var old=$(this).html();
-                var newfont=$(this).parent('td').parent('tr').children().find('input').val();
-                $(this).parent('td').html(newfont);
-            })
+        }else if(status=='保存'){
+                var newValue=edit.find('input').val();
+            edit.html($.trim(newValue.replace(/(\t|\n|\x20)/g,"")));
             $(obj).html('修改');
         }
     }
+
+</script>
 
     </body>
     </html>

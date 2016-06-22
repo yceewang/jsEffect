@@ -65,58 +65,44 @@
 	<!-- 城市俱乐部 e -->
 <script type="text/javascript">
 var clubInterval = 0;
-
+var obj = $("#club_lunbo");
 $(function(){
-	if($("#club_lunbo").children().length > 6){
-		clubInterval = setInterval(clubLunBo,5000);
+	if(obj.children().length > 6){
+		clubInterval = setInterval(next,5000);
     	$(".clubItem").hover(function(){
 			clearInterval(clubInterval);
     	},function(){
-    		clubInterval = setInterval(clubLunBo,5000);
+    		clubInterval = setInterval(next,5000);
     	});
 		$(".prev").click(function(){
 			event.preventDefault();
 			clearInterval(clubInterval);
-			if(!$("#club_lunbo").is(":animated")){
+			if(!obj.is(":animated")){
 				prev();
 			}
-			clubInterval = setInterval(clubLunBo,5000);
+			clubInterval = setInterval(next,5000);
 		});
 		$(".next").click(function(){
 			event.preventDefault();
 			clearInterval(clubInterval);
-			if(!$("#club_lunbo").is(":animated")){
+			if(!obj.is(":animated")){
 				next();
 			}
-			clubInterval = setInterval(clubLunBo,5000);
+			clubInterval = setInterval(next,5000);
 		});
 
 	}
 });
-function clubLunBo(){
-	var obj = $("#club_lunbo");
+function next(){
 	obj.animate({left: -202}, 1000,function(){
-		obj.children().eq(0).appendTo(obj);
+		$(".clubItem:first-child").appendTo(obj);
 		obj.css({left:0});
 	});
 }
 function prev(){
-	var prev = $("#club_lunbo");
-	var last = $(".clubItem:last-child").clone();
-	last.prependTo($("#club_lunbo"));
-	prev.css({left:-202});
-	prev.animate({left:0},1000,function(){
-		$(".clubItem:last-child").remove();
-	});
-}
-function next(){
-	var next = $("#club_lunbo");
-	var first = $(".clubItem:first-child").clone();
-	first.appendTo($("#club_lunbo"));
-	next.animate({left:-202},1000,function(){
-		$(".clubItem:first-child").remove();
-		next.css({left:0});
-	});
+	$(".clubItem:last-child").prependTo(obj);
+	obj.css({left:-202});
+	obj.animate({left:0},1000);
 }
 </script>
 </div>
