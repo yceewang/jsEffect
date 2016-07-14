@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>parallax</title>
+<link href="css/public.css"  rel="stylesheet" type="text/css">
+<link href="css/style.css"  rel="stylesheet" type="text/css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<style>
+.parallax{background:url(images/wa.jpg) no-repeat 50% 0 fixed; background-size:cover; height:800px; margin:1000px 0;}
+</style>
+</head>
+<body>
+<div data-speed="10" class="parallax" ></div>
+<script type="text/javascript">
+   var winWidth = $(window).width();
+var winHeight = $(window).height();
+var $bgobj = $('.parallax'); 
+var bgobjTop = $bgobj.offset().top;
+
+$(window).scroll(function() {
+    if (($(window).scrollTop() + winHeight) > bgobjTop ){
+        var yPos = -(($(window).scrollTop() - $bgobj.offset().top) / $bgobj.data('speed')); 
+        var coords = '50%'+ yPos + 'px';
+        $bgobj.css({ backgroundPosition:coords }); 
+    }
+}); 
+</script>
+</body>
+</html>
