@@ -165,8 +165,6 @@ a.cd-popup-trigger {
   height: 100%;
   width: 100%;
   background-color: rgba(94, 110, 141, 0.9);
-  opacity: 0;
-  visibility: hidden;
  /* -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
   transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
@@ -214,6 +212,9 @@ a.cd-popup-trigger {
   float: left;
   width: 50%;
   list-style: none;
+}
+.cd-popup-container .cd-buttons li.alertMsg{
+  width:100%;
 }
 .cd-popup-container .cd-buttons a {
   display: block;
