@@ -19,11 +19,9 @@
 				obj.confirmBtn();
 				obj.cancelBtn();
 			},
-			confirm:function(msg){
+			confirm:function(msg,callback){
 				obj.createHtml("confirm",msg);
-				obj.confirmBtn(function(){
-					alert("confirm button callback");
-				});
+				obj.confirmBtn(callback);
 				obj.cancelBtn();
 			}
 		}
@@ -83,7 +81,9 @@
 	})();
 
 	$("#confirm").on("click", function () {
-		$.msgBox.confirm("哈哈，添加成功!");
+		$.msgBox.confirm("哈哈，添加成功!",function(){
+			alert("confirm button callback");
+		});
 	});
 	$("#alert").on("click", function () {
 		$.msgBox.alert("哈哈，添加成功!");
